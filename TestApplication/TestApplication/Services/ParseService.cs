@@ -49,5 +49,20 @@ namespace TestApplication.Services
         {
            return lines.Skip(1);
         }
+
+        public IEnumerable<string> TransformInputDictionary(IEnumerable<string> items)
+        {
+            return items?.Select(c => MakeFirstLetterToLower(c)); 
+        }
+
+        private string MakeFirstLetterToLower(string s)
+        {
+            if (s != string.Empty && char.IsUpper(s[0]))
+            {
+                s = char.ToLower(s[0]) + s.Substring(1);
+            }
+
+            return s;
+        }
     }
 }

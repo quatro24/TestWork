@@ -22,7 +22,8 @@ namespace TestApplication.Services
             var compoundWordsWithParts = new Dictionary<string, IEnumerable<string>>();
 
             var _dictionaryItems = await GetDictionaryItems();
-            var trie = CreateTrie(_dictionaryItems);
+            var transfromedDictionaryItems = _parseService.TransformInputDictionary(_dictionaryItems);
+            var trie = CreateTrie(transfromedDictionaryItems);
 
             var inputWords = await ReadInputWordsFromFile();
             var transformedWords = _parseService.TransformInputData(inputWords);
